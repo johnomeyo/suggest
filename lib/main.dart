@@ -158,7 +158,7 @@ class Home extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30)),
                     child: Center(
                       child: Text(
-                        "Already Have the Account", 
+                        "Already Have an Account", 
                         style: TextStyle(
                             color: Color(0xFFED3034),
                             fontWeight: FontWeight.bold),
