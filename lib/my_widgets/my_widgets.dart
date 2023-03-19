@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:suggest/data/chef.dart';
+import 'package:suggest/essentials/account_info.dart';
 
 class Chefs extends StatelessWidget {
   final String chefName;
@@ -82,9 +84,9 @@ class SettingItems extends StatelessWidget {
       required this.color,
       required this.icon,
       required this.iconColor});
-  
+
   // ignore: prefer_typing_uninitialized_variables
-  final   icon;
+  final icon;
   final String title;
   final Color color;
 
@@ -142,7 +144,7 @@ class ChefDisplay extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: GridView.builder(
-        itemCount: imageItems.length, // number of items in the grid view
+        itemCount: chefs.length, // number of items in the grid view
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2, // number of columns in the grid view
           mainAxisSpacing: 10.0, // spacing between rows
@@ -151,28 +153,35 @@ class ChefDisplay extends StatelessWidget {
         ),
         itemBuilder: (context, int index) {
           // function that builds each item in the grid view
-          return Container(
-            height: 300,
-            decoration: BoxDecoration(
-                color: Color(0xFFFFFFFF),
-                border: Border.all(
-                    width: 1, color: Color.fromRGBO(238, 238, 238, 1)),
-                borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(
-                    image: AssetImage(
-                      imageItems[index],
-                    ),
-                    fit: BoxFit.cover)),
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 20),
-                child: Text(
-                  itemNames[index],
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
+           final chef = chefs[index];
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => AccountInfo(chef: chef)));
+            },
+            child: Container(
+              height: 300,
+              decoration: BoxDecoration(
+                  color: Color(0xFFFFFFFF),
+                  border: Border.all(
+                      width: 1, color: Color.fromRGBO(238, 238, 238, 1)),
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(
+                      image: AssetImage(
+                        imageItems[index],
+                      ),
+                      fit: BoxFit.cover)),
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: Text(
+                    itemNames[index],
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             ),

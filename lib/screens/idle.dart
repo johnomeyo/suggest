@@ -1,5 +1,6 @@
 // import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:suggest/data/chef.dart';
 import 'package:suggest/essentials/account_info.dart';
 import 'package:suggest/essentials/settings.dart';
 import 'package:suggest/meals/breakfast/dummy.dart';
@@ -77,7 +78,7 @@ class IdleScreen extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => AccountInfo()));
+                              builder: (context) => AccountInfo(chef: chef,)));
                     },
                     child: Text("View")),
                 MyComment(),

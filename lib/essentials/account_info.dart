@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:suggest/data/chef.dart';
+import 'package:suggest/meals/flex_widgets.dart';
 import 'package:suggest/my_widgets/them.dart';
 
 import '../my_widgets/them_widgets.dart';
-
-void main() => runApp(const AccountInfo());
+late final Chef chef;
+ void main() => runApp( AccountInfo(chef:chef ));
 
 class AccountInfo extends StatelessWidget {
-  const AccountInfo({super.key});
+    final Chef chef;
+  const AccountInfo({super.key,required this.chef});
 
   @override
   Widget build(BuildContext context) {
@@ -42,17 +45,17 @@ class AccountInfo extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         radius: 40,
-                        backgroundImage: AssetImage("lib/assets/rc.jpg"),
+                        backgroundImage: AssetImage(chef.image),
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "George Eddings",
+                            chef.name,
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            "@george_eddings",
+                            chef.username,
                             style: TextStyle(
                                 fontWeight: FontWeight.normal,
                                 fontSize: 15,
@@ -82,15 +85,15 @@ class AccountInfo extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        LikeCounts(likes: "245", likeCountFor: "recipes"),
-                        LikeCounts(likes: "127", likeCountFor: "following"),
-                        LikeCounts(likes: "29.5k", likeCountFor: "followers"),
+                        LikeCounts(likes: chef.recipes, likeCountFor: "recipes"),
+                        LikeCounts(likes:chef.following, likeCountFor: "following"),
+                        LikeCounts(likes: chef.followers, likeCountFor: "followers"),
                       ],
                     ),
                   ),
                 ),
                 TabBar(
-                  labelColor: Color(0xff1E1E1E),
+                  labelColor: Color(0xffFF3438),
                   tabs: [
                     Tab(
                       text: "Recipes",
@@ -101,8 +104,42 @@ class AccountInfo extends StatelessWidget {
                 Expanded(
                   child:
                       TabBarView(children: [
-                        Center(child: Text("John")),
-                         Center(child: Text("Abruzzi"))]),
+                        Center(child:Padding(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: PersonalRecipe(),
+                        )),
+                        //the other tab
+                        SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+                                child: Text("Description",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,),),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: Text(chef.description,
+                                style:TextStyle(fontSize: 15,)
+                                )
+                              ),
+                               Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+                                child: Text("Social media",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,),),
+                              ),
+                              Socials(imagePath: 'lib/assets/redWhatsapp.png', socialPlatform: 'Whatsapp',),
+                              Socials(imagePath: 'lib/assets/redFacebook.png', socialPlatform: 'Facebook',),
+                              Socials(imagePath: 'lib/assets/redTwitter.png', socialPlatform: 'Twitter',),
+                              Socials(imagePath: 'lib/assets/redInstagram.png', socialPlatform: 'Instagram',),
+                               Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+                                child: Text("More Info",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,),),
+                              ),
+                            ],
+                          ),
+                        )
+                         
+                         ]),
                 )
               ],
             )),

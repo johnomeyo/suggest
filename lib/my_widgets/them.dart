@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:suggest/essentials/account_info.dart';
 import 'package:suggest/my_widgets/the_widgets.dart';
 import 'package:suggest/my_widgets/them_widgets.dart';
 import '../data/recipe.dart';
@@ -60,9 +61,9 @@ class _TheButtonState extends State<TheButton> {
 
 class LikeCounts extends StatelessWidget {
   const LikeCounts(
-      {super.key, required this.likes, required this.likeCountFor});
+      {super.key, required this.likeCountFor, required this.likes, });
   final String likes;
-  final String likeCountFor;
+   final String likeCountFor;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -82,7 +83,7 @@ class LikeCounts extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    likes,
+                   likes,
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
@@ -116,7 +117,7 @@ class PersonalRecipe extends StatelessWidget {
   Widget build(BuildContext context) {
     List<String> imageItems = [
       'lib/assets/banana.jpg',
-      'lib/assets/pizza.jpg',
+      'lib/assets/piza.jpg',
       'lib/assets/berry.jpg',
       'lib/assets/b.jpg',
       'lib/assets/rc.jpg',
@@ -176,7 +177,6 @@ class PersonalRecipe extends StatelessWidget {
 
 class FoodDetailsPage extends StatelessWidget {
   final Food food;
-
   const FoodDetailsPage({super.key, required this.food});
 
   @override
