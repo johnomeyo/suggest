@@ -1,10 +1,9 @@
 // import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:suggest/data/chef.dart';
 import 'package:suggest/essentials/account_info.dart';
 import 'package:suggest/essentials/settings.dart';
-import 'package:suggest/meals/breakfast/dummy.dart';
 import 'package:suggest/screens/discover.dart';
+import 'package:suggest/settings/invite_friends.dart';
 import '../my_widgets/them.dart';
 import '../my_widgets/them_widgets.dart';
 // import 'package:url_launcher/url_launcher.dart';
@@ -78,7 +77,9 @@ class IdleScreen extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => AccountInfo(chef: chef,)));
+                              builder: (context) => AccountInfo(
+                                    chef: chef,
+                                  )));
                     },
                     child: Text("View")),
                 MyComment(),
@@ -87,9 +88,9 @@ class IdleScreen extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => SpicyNoodles()));
+                              builder: (context) => InviteFriends()));
                     },
-                    child: Text("Product Display"))
+                    child: Text("Invitation"))
               ],
             ),
           ),

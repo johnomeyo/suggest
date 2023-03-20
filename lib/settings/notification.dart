@@ -28,8 +28,8 @@ class SettingNotification extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                "Notify me when...",
-                style: TextStyle(fontWeight: FontWeight.w300, fontSize: 20),
+                "Notify me when....",
+                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 20),
               ),
             ),
             MyCustomWidget(text: "There is a new recommendation"),

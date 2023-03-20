@@ -58,18 +58,97 @@ class FoodGrid extends StatelessWidget {
 class Socials extends StatelessWidget {
   final String imagePath;
   final String socialPlatform;
-  const Socials({super.key, required this.imagePath, required this.socialPlatform});
+  const Socials(
+      {super.key, required this.imagePath, required this.socialPlatform});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: Row(
         children: [
-         Image.asset(imagePath, height: 30,),
-         SizedBox(width: 20,),
-         Text(socialPlatform, style: TextStyle(color: Color(0xffFF3438)),)
+          Image.asset(
+            imagePath,
+            height: 30,
+          ),
+          SizedBox(
+            width: 20,
+          ),
+          Text(
+            socialPlatform,
+            style: TextStyle(color: Color(0xffFF3438)),
+          )
         ],
+      ),
+    );
+  }
+}
+
+class Invites extends StatelessWidget {
+  const Invites({super.key, required this.name, required this.avatarImage});
+  final String name;
+  final String avatarImage;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Row(
+        children: [
+          CircleAvatar(
+            backgroundImage: AssetImage(avatarImage),
+            radius: 30,
+          ),
+          SizedBox(
+            width: 30,
+          ),
+          Text(
+            name,
+            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
+          ),
+          Spacer(),
+          InviteButton()
+        ],
+      ),
+    );
+  }
+}
+
+class InviteButton extends StatefulWidget {
+  const InviteButton({super.key});
+
+  @override
+  State<InviteButton> createState() => _TheButtonState();
+}
+
+bool isPressed = true;
+
+class _TheButtonState extends State<InviteButton> {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          isPressed = false;
+        });
+      },
+      child: Container(
+        width: 70,
+        height: 30,
+        decoration: BoxDecoration(
+            color: Color(isPressed ? 0xffFF3438 : 0xffFFFFFF),
+            border: Border.all(width: 1, color: Color(0xffFF3438)),
+            borderRadius: BorderRadius.circular(10)),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(),
+          child: Center(
+              child: Text(
+            isPressed ? "Invite" : "Invited",
+            style: TextStyle(
+                color: Color(isPressed ? 0xffFFFFFF : 0xffFF3438),
+                fontSize: 15,
+                fontWeight: FontWeight.w600),
+          )),
+        ),
       ),
     );
   }

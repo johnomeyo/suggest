@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:suggest/essentials/system.dart';
 import 'package:suggest/my_widgets/the_widgets.dart';
+import 'package:suggest/settings/notification.dart';
 
 void main() => runApp(const Notifications());
 
@@ -36,9 +37,17 @@ class Notifications extends StatelessWidget {
               actions: [
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Icon(
-                    Icons.settings_outlined,
-                    color: Colors.black,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SettingNotification()));
+                    },
+                    child: Icon(
+                      Icons.settings_outlined,
+                      color: Colors.black,
+                    ),
                   ),
                 )
               ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:suggest/main.dart';
 import 'package:suggest/my_widgets/my_widgets.dart';
+import 'package:suggest/settings/invite_friends.dart';
 import 'package:suggest/settings/notification.dart';
 
 void main() => runApp(const Settings());
@@ -59,11 +60,17 @@ class Settings extends StatelessWidget {
                 color: Colors.grey[300],
               ),
             ),
-            SettingItems(
-              title: "Invite Friends",
-              color: Color(0xffFFF7CE),
-              icon: Icons.people,
-              iconColor: Color(0xffFFA724),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => InviteFriends()));
+              },
+              child: SettingItems(
+                title: "Invite Friends",
+                color: Color(0xffFFF7CE),
+                icon: Icons.people,
+                iconColor: Color(0xffFFA724),
+              ),
             ),
             SettingItems(
               title: "Help Center",

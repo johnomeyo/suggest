@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:suggest/essentials/account_info.dart';
 import 'package:suggest/my_widgets/the_widgets.dart';
 import 'package:suggest/my_widgets/them_widgets.dart';
 import '../data/recipe.dart';
+// ignore: depend_on_referenced_packages
 import 'package:fluttertoast/fluttertoast.dart';
 
 class MyComment extends StatelessWidget {
@@ -37,14 +37,14 @@ class _TheButtonState extends State<TheButton> {
         });
       },
       child: Container(
-        width: 100,
+        width: 70,
         height: 40,
         decoration: BoxDecoration(
             color: Color(isPressed ? 0xffFF3438 : 0xffFAFAFA),
-            border: Border.all(width: 1, color: Colors.pink),
+            border: Border.all(width: 1, color:Color(0xffFF3438)),
             borderRadius: BorderRadius.circular(10)),
         child: Padding(
-          padding: const EdgeInsets.all(5.0),
+          padding: const EdgeInsets.symmetric(),
           child: Center(
               child: Text(
             isPressed ? "Follow" : "Following",
@@ -77,7 +77,7 @@ class LikeCounts extends StatelessWidget {
           child: Row(
             children: [
               SizedBox(
-                width: 20,
+                width: 5,
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -96,7 +96,7 @@ class LikeCounts extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                width: 20,
+                width: 5,
               )
             ],
           ),
@@ -181,122 +181,124 @@ class FoodDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 400,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(
-                        food.image,
-                      ),
-                      fit: BoxFit.cover)),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
-                child: Align(
-                  alignment: Alignment.topCenter,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      GestureDetector(
-                          onTap: () => Navigator.pop(context),
-                          child: Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
-                          )),
-                      Spacer(),
-                      GestureDetector(
-                          onTap: () {
-                            Fluttertoast.showToast(
-                              msg: "Added to Bookmarks",
-                              toastLength: Toast.LENGTH_SHORT,
-                              timeInSecForIosWeb: 1,
-                              backgroundColor: Color(0xffFF3438),
-                              textColor: Colors.black,
-                              fontSize: 16.0,
-                              gravity: ToastGravity.TOP_LEFT,
-                            );
-                          },
-                          child: Icon(
-                            Icons.bookmark_outline,
-                            color: Colors.white,
-                            size: 35,
-                          )),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      BottomSheetExample(),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      MoreIcon(),
-                    ],
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 400,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(
+                          food.image,
+                        ),
+                        fit: BoxFit.cover)),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        GestureDetector(
+                            onTap: () => Navigator.pop(context),
+                            child: Icon(
+                              Icons.arrow_back,
+                              color: Colors.white,
+                            )),
+                        Spacer(),
+                        GestureDetector(
+                            onTap: () {
+                              Fluttertoast.showToast(
+                                msg: "Added to Bookmarks",
+                                toastLength: Toast.LENGTH_SHORT,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Color(0xffFF3438),
+                                textColor: Colors.white,
+                                fontSize: 16.0,
+                                gravity: ToastGravity.TOP_LEFT,
+                              );
+                            },
+                            child: Icon(
+                              Icons.bookmark_outline,
+                              color: Colors.white,
+                              size: 35,
+                            )),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        BottomSheetExample(),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        MoreIcon(),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(height: 8),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Text(food.caption,
-                        style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold)),
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                    food.description,
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  const SizedBox(height: 16),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Divider(),
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                    'Ingredients:',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
-                  ),
-                  ...food.ingredients
-                      .map((ingredient) => Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text('- $ingredient',style:  TextStyle(fontSize: 20)),
-                      )),
-                  const SizedBox(height: 16),
-                  Text(
-                    'Instructions:',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                   ...food.recipe
-                      .map((recipe) => Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text('- $recipe',style:  TextStyle(fontSize: 20),),
-                      )),
-                       Headings(heading: 'Comments(125)',),
-              Comments(
-                avatarImage: "lib/assets/chef.png",
-                userName: 'Samson Nyabuto',
-                theComment:
-                    'Loving this recipe! So many delicious recipes to choose from❤️❤️',
-              )
-                ],
+              const SizedBox(height: 8),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Text(food.caption,
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold)),
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      food.description,
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    const SizedBox(height: 16),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Divider(),
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      'Ingredients:',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
+                    ),
+                    ...food.ingredients
+                        .map((ingredient) => Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('- $ingredient',style:  TextStyle(fontSize: 20)),
+                        )),
+                    const SizedBox(height: 16),
+                    Text(
+                      'Instructions:',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                     ...food.recipe
+                        .map((recipe) => Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('- $recipe',style:  TextStyle(fontSize: 20),),
+                        )),
+                         Headings(heading: 'Comments(125)',),
+                Comments(
+                  avatarImage: "lib/assets/chef.png",
+                  userName: 'Samson Nyabuto',
+                  theComment:
+                      'Loving this recipe! So many delicious recipes to choose from❤️❤️',
+                )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

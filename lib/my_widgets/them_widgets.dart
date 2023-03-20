@@ -256,45 +256,65 @@ class BottomSheetExample extends StatelessWidget {
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30), topRight: Radius.circular(30))),
           builder: (BuildContext context) {
-            return SizedBox(
-                height: 250,
-                child: GridView.builder(
-                    itemCount: imageUrl.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4,
-                      crossAxisSpacing: 10,
-                    ),
-                    itemBuilder: (BuildContext context, int index) {
-                      return Column(
-                        children: [
-                          Container(
-                            height: 100,
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 0, color: Colors.white)),
-                            child: Column(
-                              children: [
-                                // Text("Share",style: TextStyle(fontWeight: FontWeight.bold),),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Image.asset(
-                                  imageUrl[index],
-                                  height: 50,
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  socialNames[index],
-                                  style: TextStyle(fontSize: 10),
-                                ),
-                              ],
-                            ),
+            return Column(
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Share",
+                  style: TextStyle(fontWeight: FontWeight.w900, fontSize: 25),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Divider(
+                    color: Colors.grey.shade300,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Flexible(
+                  child: GridView.builder(
+                      itemCount: imageUrl.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 4,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10),
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                          height: 100,
+                          decoration: BoxDecoration(
+                              //color: Colors.indigo,
+                              border:
+                                  Border.all(width: 0, color: Colors.white)),
+                          child: Column(
+                            children: [
+                              // Text("Share",style: TextStyle(fontWeight: FontWeight.bold),),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Image.asset(
+                                imageUrl[index],
+                                height: 50,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                socialNames[index],
+                                style: TextStyle(fontSize: 10),
+                              ),
+                            ],
                           ),
-                        ],
-                      );
-                    }));
+                        );
+                      }),
+                ),
+              ],
+            );
           },
         );
       },
