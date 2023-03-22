@@ -40,7 +40,7 @@ class MyWidget extends StatefulWidget {
   State<MyWidget> createState() => _MyWidgetState();
 }
 
-bool isObsolete = false;
+bool isObsolete = true;
 
 class _MyWidgetState extends State<MyWidget> {
   @override
@@ -153,11 +153,13 @@ class ChefDisplay extends StatelessWidget {
         ),
         itemBuilder: (context, int index) {
           // function that builds each item in the grid view
-           final chef = chefs[index];
+          final chef = chefs[index];
           return GestureDetector(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => AccountInfo(chef: chef)));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => AccountInfo(chef: chef)));
             },
             child: Container(
               height: 300,

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import '../data/recipe.dart';
@@ -151,5 +153,78 @@ class _TheButtonState extends State<InviteButton> {
         ),
       ),
     );
+  }
+}
+
+class SignInput extends StatelessWidget {
+  const SignInput({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      decoration: InputDecoration(border: UnderlineInputBorder()),
+    );
+  }
+}
+
+class OTPentry extends StatelessWidget {
+  const OTPentry({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      width: 50,
+      decoration: BoxDecoration(
+        border: Border.all(width: 2, color: Colors.black),
+        borderRadius: BorderRadius.circular(10),
+        // backgroundBlendMode: BlendMode.overlay,
+      ),
+      child: Center(
+          child: Text(
+        "1",
+        style: TextStyle(color: Color(0xffFF3438)),
+      )),
+    );
+  }
+}
+
+class CountdownTimer extends StatefulWidget {
+  final int durationInSeconds;
+  final int minimumValue;
+
+  CountdownTimer({required this.durationInSeconds, required this.minimumValue});
+
+  @override
+  _CountdownTimerState createState() => _CountdownTimerState();
+}
+
+class _CountdownTimerState extends State<CountdownTimer> {
+  int _seconds = 0;
+  Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    _seconds = widget.durationInSeconds;
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        _seconds--;
+        if (_seconds == widget.minimumValue) {
+          _timer?.cancel();
+        }
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Text('$_seconds', style: TextStyle(color: Color(0xffFF3438)));
   }
 }

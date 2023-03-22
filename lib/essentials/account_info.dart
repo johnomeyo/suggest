@@ -136,6 +136,7 @@ class AccountInfo extends StatelessWidget {
                                   padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
                                   child: Text("More Info",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,),),
                                 ),
+                                
                               ],
                             ),
                           )

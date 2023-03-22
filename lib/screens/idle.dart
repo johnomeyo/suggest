@@ -2,10 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:suggest/essentials/account_info.dart';
 import 'package:suggest/essentials/settings.dart';
+import 'package:suggest/meals/flex_widgets.dart';
 import 'package:suggest/screens/discover.dart';
-import 'package:suggest/settings/invite_friends.dart';
+import 'package:suggest/sign_in/sign_in.dart';
 import '../my_widgets/them.dart';
 import '../my_widgets/them_widgets.dart';
+import 'dart:async';
 // import 'package:url_launcher/url_launcher.dart';
 
 void main() => runApp(const IdleScreen());
@@ -82,15 +84,14 @@ class IdleScreen extends StatelessWidget {
                                   )));
                     },
                     child: Text("View")),
-                MyComment(),
+                // MyComment(),
+
                 TextButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => InviteFriends()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => SignIn()));
                     },
-                    child: Text("Invitation"))
+                    child: Text("Sign in")),
               ],
             ),
           ),
