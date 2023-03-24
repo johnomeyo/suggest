@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 ///import 'package:flutter/src/widgets/framework.dart';
 //import 'package:flutter/src/widgets/placeholder.dart';
@@ -116,8 +117,36 @@ class _TopState extends State<Top> {
     return Row(
       children: [
         GestureDetector(child: Icon(Icons.arrow_back)),
-        MySlider(),
+        ProgressIndicator(),
       ],
+    );
+  }
+}
+
+class ProgressIndicator extends StatefulWidget {
+  const ProgressIndicator({
+    super.key,
+  });
+
+// final double percentage;
+
+  @override
+  State<ProgressIndicator> createState() => _ProgressIndicatorState();
+}
+
+class _ProgressIndicatorState extends State<ProgressIndicator> {
+// late final double percentage;
+
+  @override
+  Widget build(BuildContext context) {
+    return LinearPercentIndicator(
+      percent: 0.5,
+      width: 200,
+      lineHeight: 10.0,
+      animationDuration: 3000,
+      backgroundColor: Colors.grey.shade200,
+      progressColor: Color(0xffFF3438),
+      barRadius: Radius.circular(10),
     );
   }
 }

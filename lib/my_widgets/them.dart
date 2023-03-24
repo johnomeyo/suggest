@@ -41,7 +41,7 @@ class _TheButtonState extends State<TheButton> {
         height: 40,
         decoration: BoxDecoration(
             color: Color(isPressed ? 0xffFF3438 : 0xffFAFAFA),
-            border: Border.all(width: 1, color:Color(0xffFF3438)),
+            border: Border.all(width: 1, color: Color(0xffFF3438)),
             borderRadius: BorderRadius.circular(10)),
         child: Padding(
           padding: const EdgeInsets.symmetric(),
@@ -60,10 +60,13 @@ class _TheButtonState extends State<TheButton> {
 }
 
 class LikeCounts extends StatelessWidget {
-  const LikeCounts(
-      {super.key, required this.likeCountFor, required this.likes, });
+  const LikeCounts({
+    super.key,
+    required this.likeCountFor,
+    required this.likes,
+  });
   final String likes;
-   final String likeCountFor;
+  final String likeCountFor;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -83,7 +86,7 @@ class LikeCounts extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                   likes,
+                    likes,
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
@@ -267,33 +270,39 @@ class FoodDetailsPage extends StatelessWidget {
                     const SizedBox(height: 16),
                     Text(
                       'Ingredients:',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
                     ),
-                    ...food.ingredients
-                        .map((ingredient) => Padding(
+                    ...food.ingredients.map((ingredient) => Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text('- $ingredient',style:  TextStyle(fontSize: 20)),
+                          child: Text('- $ingredient',
+                              style: TextStyle(fontSize: 20)),
                         )),
                     const SizedBox(height: 16),
                     Text(
                       'Instructions:',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
                     ),
                     SizedBox(
                       height: 20,
                     ),
-                     ...food.recipe
-                        .map((recipe) => Padding(
+                    ...food.recipe.map((recipe) => Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text('- $recipe',style:  TextStyle(fontSize: 20),),
+                          child: Text(
+                            '- $recipe',
+                            style: TextStyle(fontSize: 20),
+                          ),
                         )),
-                         Headings(heading: 'Comments(125)',),
-                Comments(
-                  avatarImage: "lib/assets/chef.png",
-                  userName: 'Samson Nyabuto',
-                  theComment:
-                      'Loving this recipe! So many delicious recipes to choose from❤️❤️',
-                )
+                    Headings(
+                      heading: 'Comments(125)',
+                    ),
+                    Comments(
+                      avatarImage: "lib/assets/chef.png",
+                      userName: 'Samson Nyabuto',
+                      theComment:
+                          'Loving this recipe! So many delicious recipes to choose from❤️❤️',
+                    )
                   ],
                 ),
               ),

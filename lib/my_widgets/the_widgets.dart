@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class MycheckBox extends StatefulWidget {
   const MycheckBox({super.key});
@@ -45,12 +46,25 @@ class Recipes extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(right: 8, top: 8),
-            child: Align(
-              alignment: Alignment.topRight,
-              child: CircleAvatar(
-                radius: 15,
-                backgroundColor: Color(0xFFFF3438),
-                child: Icon(Icons.bookmark_outline),
+            child: GestureDetector(
+              onTap: () {
+                Fluttertoast.showToast(
+                  msg: "Added to Bookmarks",
+                  toastLength: Toast.LENGTH_SHORT,
+                  timeInSecForIosWeb: 1,
+                  backgroundColor: Color(0xffFF3438),
+                  textColor: Colors.white,
+                  fontSize: 16.0,
+                  gravity: ToastGravity.TOP_LEFT,
+                );
+              },
+              child: Align(
+                alignment: Alignment.topRight,
+                child: CircleAvatar(
+                  radius: 15,
+                  backgroundColor: Color(0xFFFF3438),
+                  child: Icon(Icons.bookmark_outline),
+                ),
               ),
             ),
           ),

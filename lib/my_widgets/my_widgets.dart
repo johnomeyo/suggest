@@ -53,7 +53,7 @@ class _MyWidgetState extends State<MyWidget> {
               isObsolete = !isObsolete;
             });
           },
-          child: Icon(isObsolete ? Icons.remove_red_eye : Icons.favorite),
+          child: Icon(isObsolete ? Icons.remove_red_eye : Icons.visibility_off),
         ),
       ),
       obscureText: isObsolete,

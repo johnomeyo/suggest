@@ -141,12 +141,12 @@ class SignIn extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
                         border:
-                            Border.all(width: 1, color: Colors.grey.shade300)),
+                            Border.all(width: 1, color: Colors.grey.shade100)),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
                       child: Image.asset(
-                        "lib/assets/google.png",
+                        "lib/assets/newGoogle.png",
                         height: 40,
                       ),
                     ),
@@ -156,7 +156,7 @@ class SignIn extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
                         border:
-                            Border.all(width: 1, color: Colors.grey.shade300)),
+                            Border.all(width: 1, color: Colors.grey.shade100)),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
@@ -171,12 +171,12 @@ class SignIn extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
                         border:
-                            Border.all(width: 1, color: Colors.grey.shade300)),
+                            Border.all(width: 1, color: Colors.grey.shade100)),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
                       child: Image.asset(
-                        "lib/assets/blackfb.png",
+                        "lib/assets/facebook.png",
                         height: 40,
                       ),
                     ),
