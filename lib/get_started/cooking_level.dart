@@ -65,7 +65,7 @@ class CookingLevel extends StatelessWidget {
                             height: 20,
                           ),
                           Text(
-                            "Basic Understanding of kitchen toools and basic\ncooking techniques such as boiling and frying.",
+                            "Basic Understanding of kitchen toools and basic cooking techniques such as boiling and frying.",
                             style: TextStyle(
                                 color: Color(
                                   0xFF606060,
@@ -96,7 +96,7 @@ class CookingLevel extends StatelessWidget {
                             height: 20,
                           ),
                           Text(
-                            "Ability to followe recipes, prepare simple dishes\n and basic knive skills",
+                            "Ability to followe recipes, prepare simple dishes and basic knive skills",
                             style: TextStyle(
                                 color: Color(
                                   0xFF606060,
@@ -127,7 +127,7 @@ class CookingLevel extends StatelessWidget {
                             height: 20,
                           ),
                           Text(
-                            "Understanding of cooking principles, create\n recipes & proficiency in various cooing\n techniques such as baking,grilling and roasting.",
+                            "Understanding of cooking principles, create recipes & proficiency in various cooking techniques such as baking,grilling and roasting.",
                             style: TextStyle(
                                 color: Color(
                                   0xFF606060,
@@ -158,7 +158,7 @@ class CookingLevel extends StatelessWidget {
                             height: 20,
                           ),
                           Text(
-                            "Basic Understanding of kitchen toools and basic\ncooking techniques such as boiling and frying.",
+                            "Basic Understanding of kitchen toools and basic cooking techniques such as boiling and frying.",
                             style: TextStyle(
                                 color: Color(
                                   0xFF606060,

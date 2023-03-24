@@ -124,11 +124,11 @@ class _TopState extends State<Top> {
 }
 
 class ProgressIndicator extends StatefulWidget {
+  //final double percentage;
   const ProgressIndicator({
     super.key,
+    //required this.percentage,
   });
-
-// final double percentage;
 
   @override
   State<ProgressIndicator> createState() => _ProgressIndicatorState();
@@ -140,10 +140,11 @@ class _ProgressIndicatorState extends State<ProgressIndicator> {
   @override
   Widget build(BuildContext context) {
     return LinearPercentIndicator(
-      percent: 0.5,
+      percent:0.5 ,
       width: 200,
       lineHeight: 10.0,
-      animationDuration: 3000,
+      animation: true,
+      animationDuration: 1000,
       backgroundColor: Colors.grey.shade200,
       progressColor: Color(0xffFF3438),
       barRadius: Radius.circular(10),
