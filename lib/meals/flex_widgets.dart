@@ -193,9 +193,10 @@ class CountdownTimer extends StatefulWidget {
   final int durationInSeconds;
   final int minimumValue;
 
-  CountdownTimer({required this.durationInSeconds, required this.minimumValue});
+  const CountdownTimer({super.key, required this.durationInSeconds, required this.minimumValue});
 
   @override
+  // ignore: library_private_types_in_public_api
   _CountdownTimerState createState() => _CountdownTimerState();
 }
 

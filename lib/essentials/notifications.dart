@@ -53,10 +53,13 @@ class Notifications extends StatelessWidget {
               ],
               elevation: 0,
               //bottom: ,
-              bottom: TabBar(labelColor: Colors.black, tabs: [
-                Tab(text: "General"),
-                Tab(text: "System"),
-              ]),
+              bottom: TabBar(
+                  labelColor: Color(0xffFF3438),
+                  unselectedLabelColor: Colors.black,
+                  tabs: [
+                    Tab(text: "General"),
+                    Tab(text: "System"),
+                  ]),
             ),
             body: TabBarView(
               children: [

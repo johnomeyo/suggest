@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:suggest/main.dart';
 import 'package:suggest/my_widgets/my_widgets.dart';
+import 'package:suggest/settings/about.dart';
+import 'package:suggest/settings/help_center.dart';
 import 'package:suggest/settings/invite_friends.dart';
 import 'package:suggest/settings/notification.dart';
 
@@ -15,7 +17,15 @@ class Settings extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          leading: BackPress(),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
+          ),
           title: Text(
             "Settings",
             style: TextStyle(
@@ -72,17 +82,29 @@ class Settings extends StatelessWidget {
                 iconColor: Color(0xffFFA724),
               ),
             ),
-            SettingItems(
-              title: "Help Center",
-              color: Color(0xffEBF9E5),
-              icon: Icons.book,
-              iconColor: Color(0xff00DDAB),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HelpCenter()));
+              },
+              child: SettingItems(
+                title: "Help Center",
+                color: Color(0xffEBF9E5),
+                icon: Icons.book,
+                iconColor: Color(0xff00DDAB),
+              ),
             ),
-            SettingItems(
-              title: "About Mooncake",
-              color: Color(0xffECF1FF),
-              icon: Icons.help,
-              iconColor: Color(0xff4E91FD),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => About()));
+              },
+              child: SettingItems(
+                title: "About Mooncake",
+                color: Color(0xffECF1FF),
+                icon: Icons.help,
+                iconColor: Color(0xff4E91FD),
+              ),
             ),
             GestureDetector(
                 onTap: () {

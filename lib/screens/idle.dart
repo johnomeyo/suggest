@@ -1,12 +1,14 @@
 // import 'package:flutter/foundation.dart';
 
 import 'package:flutter/material.dart';
-import 'package:suggest/essentials/account_info.dart';
 import 'package:suggest/essentials/settings.dart';
 import 'package:suggest/screens/discover.dart';
+import 'package:suggest/settings/about.dart';
+import 'package:suggest/settings/help_center.dart';
 import 'package:suggest/sign_in/sign_in.dart';
 import '../my_widgets/them_widgets.dart';
 // import 'dart:async';
+// ignore: depend_on_referenced_packages
 import 'package:url_launcher/url_launcher.dart';
 
 void main() => runApp(const IdleScreen());
@@ -17,14 +19,9 @@ class IdleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(primarySwatch: Colors.pink),
       home: Scaffold(
         appBar: AppBar(
-          // actions: [
-          //   Padding(
-          //     padding: const EdgeInsets.only(right: 20),
-          //     child: Center(child: MyComment()),
-          //   )
-          // ],
           leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);
@@ -83,14 +80,10 @@ class IdleScreen extends StatelessWidget {
                 ),
                 TextButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AccountInfo(
-                                    chef: chef,
-                                  )));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => About()));
                     },
-                    child: Text("View")),
+                    child: Text("About")),
                 // MyComment(),
                 WhatsAppScreen(),
                 TextButton(
@@ -99,7 +92,14 @@ class IdleScreen extends StatelessWidget {
                           MaterialPageRoute(builder: (context) => SignIn()));
                     },
                     child: Text("Sign in")),
-                TextButton(onPressed: () {}, child: Text("Whatsapp"))
+                TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HelpCenter()));
+                    },
+                    child: Text("Help Center"))
               ],
             ),
           ),
@@ -125,7 +125,7 @@ class WhatsAppScreen extends StatelessWidget {
   void openWhatsapp() async {
     const phoneNumber = '0729822061';
     final Uri whatsappUrl = Uri.parse('https://wa.me/$phoneNumber');
-    if (await canLaunchUrl( whatsappUrl)) {
+    if (await canLaunchUrl(whatsappUrl)) {
       await launchUrl(whatsappUrl);
     } else {
       throw 'Could not launch $whatsappUrl';

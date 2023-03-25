@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:suggest/meals/flex_widgets.dart';
 import 'package:suggest/my_widgets/widgets.dart';
 import 'package:suggest/screens/home_screen.dart';
