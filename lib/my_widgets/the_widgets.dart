@@ -25,10 +25,17 @@ class _MycheckBoxState extends State<MycheckBox> {
   }
 }
 
-class Recipes extends StatelessWidget {
+class Recipes extends StatefulWidget {
   const Recipes({super.key, required this.imagePath});
   final String imagePath;
 
+  @override
+  State<Recipes> createState() => _RecipesState();
+}
+
+bool isAdded = false;
+
+class _RecipesState extends State<Recipes> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,7 +45,7 @@ class Recipes extends StatelessWidget {
         color: Colors.black,
         borderRadius: BorderRadius.circular(10),
         image: DecorationImage(
-          image: AssetImage(imagePath),
+          image: AssetImage(widget.imagePath),
           fit: BoxFit.cover,
         ),
       ),
@@ -49,22 +56,39 @@ class Recipes extends StatelessWidget {
             padding: const EdgeInsets.only(right: 8, top: 8),
             child: GestureDetector(
               onTap: () {
-                Fluttertoast.showToast(
-                  msg: "Added to Bookmarks",
-                  toastLength: Toast.LENGTH_SHORT,
-                  timeInSecForIosWeb: 1,
-                  backgroundColor: Color(0xffFF3438),
-                  textColor: Colors.white,
-                  fontSize: 16.0,
-                  gravity: ToastGravity.TOP_LEFT,
-                );
+                 isAdded = true;
+                setState(() {
+                 
+                  if (isAdded == true) {
+                    Fluttertoast.showToast(
+                      msg: "Added to Bookmarks",
+                      toastLength: Toast.LENGTH_SHORT,
+                      timeInSecForIosWeb: 1,
+                      backgroundColor: Color(0xffFF3438),
+                      textColor: Colors.white,
+                      fontSize: 16.0,
+                      gravity: ToastGravity.TOP_LEFT,
+                    );
+                  } else {
+                    Fluttertoast.showToast(
+                      msg: "Already Added to Bookmark",
+                      toastLength: Toast.LENGTH_SHORT,
+                      timeInSecForIosWeb: 1,
+                      backgroundColor: Color(0xffFF3438),
+                      textColor: Colors.white,
+                      fontSize: 16.0,
+                      gravity: ToastGravity.TOP_LEFT,
+                    );
+                  }
+                  //print(isAdded);
+                });
               },
               child: Align(
                 alignment: Alignment.topRight,
                 child: CircleAvatar(
                   radius: 15,
                   backgroundColor: Color(0xFFFF3438),
-                  child: Icon(Icons.bookmark_outline),
+                  child: Icon(isAdded ? Icons.check : Icons.bookmark_outline),
                 ),
               ),
             ),

@@ -3,6 +3,7 @@ import 'package:suggest/get_started/country.dart';
 
 import 'package:suggest/screens/home_screen.dart';
 import 'package:suggest/screens/idle.dart';
+import 'package:suggest/splash.dart';
 
 void main() => runApp(const MyApp());
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.light(),
-      home: Home(),
+      home: Splash(),
     );
   }
 }
