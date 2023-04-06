@@ -10,11 +10,15 @@ class MyComment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            border: Border.all(width: 1, color: Colors.black)),
-        child: Icon(Icons.more_horiz_rounded));
+    return CircleAvatar(
+      radius: 11,
+      backgroundColor: Colors.black,
+      child: CircleAvatar(
+        backgroundColor: Colors.white,
+        radius: 10,
+        child: Icon(Icons.more_horiz_outlined,color: Colors.black,size: 15,),
+      ),
+    );
   }
 }
 

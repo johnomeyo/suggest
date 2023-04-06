@@ -4,12 +4,13 @@ import 'package:suggest/meals/flex_widgets.dart';
 import 'package:suggest/my_widgets/them.dart';
 
 import '../my_widgets/them_widgets.dart';
+
 late final Chef chef;
- void main() => runApp( AccountInfo(chef:chef ));
+void main() => runApp(AccountInfo(chef: chef));
 
 class AccountInfo extends StatelessWidget {
-    final Chef chef;
-  const AccountInfo({super.key,required this.chef});
+  final Chef chef;
+  const AccountInfo({super.key, required this.chef});
 
   @override
   Widget build(BuildContext context) {
@@ -86,9 +87,12 @@ class AccountInfo extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          LikeCounts(likes: chef.recipes, likeCountFor: "recipes"),
-                          LikeCounts(likes:chef.following, likeCountFor: "following"),
-                          LikeCounts(likes: chef.followers, likeCountFor: "followers"),
+                          LikeCounts(
+                              likes: chef.recipes, likeCountFor: "recipes"),
+                          LikeCounts(
+                              likes: chef.following, likeCountFor: "following"),
+                          LikeCounts(
+                              likes: chef.followers, likeCountFor: "followers"),
                         ],
                       ),
                     ),
@@ -103,49 +107,120 @@ class AccountInfo extends StatelessWidget {
                     ],
                   ),
                   Expanded(
-                    child:
-                        TabBarView(children: [
-                          Center(child:Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: PersonalRecipe(),
-                          )),
-                          //the other tab
-                          SingleChildScrollView(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
-                                  child: Text("Description",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,),),
+                    child: TabBarView(children: [
+                      Center(
+                          child: Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: PersonalRecipe(),
+                      )),
+                      //the other tab
+                      SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 20),
+                              child: Text(
+                                "Description",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(20),
-                                  child: Text(chef.description,
-                                  style:TextStyle(fontSize: 15,)
-                                  )
-                                ),
-                                 Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
-                                  child: Text("Social media",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,),),
-                                ),
-                                Socials(imagePath: 'lib/assets/redWhatsapp.png', socialPlatform: 'Whatsapp',),
-                                Socials(imagePath: 'lib/assets/redFacebook.png', socialPlatform: 'Facebook',),
-                                Socials(imagePath: 'lib/assets/redTwitter.png', socialPlatform: 'Twitter',),
-                                Socials(imagePath: 'lib/assets/redInstagram.png', socialPlatform: 'Instagram',),
-                                 Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
-                                  child: Text("More Info",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,),),
-                                ),
-                                
-                              ],
+                              ),
                             ),
-                          )
-                           
-                           ]),
+                            Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: Text(chef.description,
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                    ))),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 20),
+                              child: Text(
+                                "Social media",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                            Socials(
+                              imagePath: 'lib/assets/redWhatsapp.png',
+                              socialPlatform: 'Whatsapp',
+                            ),
+                            Socials(
+                              imagePath: 'lib/assets/redFacebook.png',
+                              socialPlatform: 'Facebook',
+                            ),
+                            Socials(
+                              imagePath: 'lib/assets/redTwitter.png',
+                              socialPlatform: 'Twitter',
+                            ),
+                            Socials(
+                              imagePath: 'lib/assets/redInstagram.png',
+                              socialPlatform: 'Instagram',
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 20),
+                              child: Text(
+                                "More Info",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                            MoreInfo(
+                              infoAbout: "www.exampledormain.com",
+                              icon: Icons.favorite_outline_outlined,
+                            ),
+                            MoreInfo(
+                              infoAbout: "Nairobi, Kenya",
+                              icon: Icons.location_pin,
+                            ),
+                            MoreInfo(
+                              infoAbout: "Joined since, April 3rd 2023",
+                              icon: Icons.calendar_today,
+                            ),
+                            MoreInfo(
+                              infoAbout: "11237658 views",
+                              icon: Icons.graphic_eq,
+                            ),
+                            SizedBox(height: 50,)
+                          ],
+                        ),
+                      )
+                    ]),
                   )
                 ],
               )),
         ),
+      ),
+    );
+  }
+}
+
+class MoreInfo extends StatelessWidget {
+  const MoreInfo({super.key, this.icon, required this.infoAbout});
+  // ignore: prefer_typing_uninitialized_variables
+  final icon;
+  final String infoAbout;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+      child: Row(
+        children: [
+          Icon(icon,color: Colors.grey.shade700,),
+          SizedBox(width: 50,),
+          Text(
+            infoAbout,
+            style: TextStyle(color: Colors.black, fontSize: 15),
+          ),
+        ],
       ),
     );
   }

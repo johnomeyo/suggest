@@ -125,7 +125,7 @@ class _TopState extends State<Top> {
 }
 
 class ProgressIndicator extends StatefulWidget {
-  //final double percentage;
+ // final double percentage;
   const ProgressIndicator({
     super.key,
     //required this.percentage,
@@ -141,7 +141,7 @@ class _ProgressIndicatorState extends State<ProgressIndicator> {
   @override
   Widget build(BuildContext context) {
     return LinearPercentIndicator(
-      percent:0.5 ,
+      percent:0.5, //pecentage ,
       width: 200,
       lineHeight: 10.0,
       animation: true,

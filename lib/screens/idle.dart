@@ -1,10 +1,11 @@
 // import 'package:flutter/foundation.dart';
 
 import 'package:flutter/material.dart';
+import 'package:suggest/essentials/create_recipe.dart';
 import 'package:suggest/essentials/settings.dart';
+import 'package:suggest/meals/lunch/follow.dart';
 import 'package:suggest/screens/discover.dart';
 import 'package:suggest/settings/about.dart';
-import 'package:suggest/settings/help_center.dart';
 import 'package:suggest/sign_in/sign_in.dart';
 import '../my_widgets/them_widgets.dart';
 // import 'dart:async';
@@ -80,10 +81,12 @@ class IdleScreen extends StatelessWidget {
                 ),
                 TextButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => About()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CreateRecipe()));
                     },
-                    child: Text("About")),
+                    child: Text("Create Recipe")),
                 // MyComment(),
                 WhatsAppScreen(),
                 TextButton(
@@ -97,7 +100,7 @@ class IdleScreen extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => HelpCenter()));
+                              builder: (context) => FollowAndFollowing()));
                     },
                     child: Text("Help Center"))
               ],
