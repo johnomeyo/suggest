@@ -20,7 +20,9 @@ class CreateRecipe extends StatelessWidget {
                 },
                 icon: Icon(Icons.close, color: Colors.black)),
             title: Text(
-              "Create",
+              """
+Create a new and delicious recipe""",
+              overflow: TextOverflow.ellipsis,
               style:
                   TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
             ),
@@ -77,6 +79,41 @@ class CreateRecipe extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Description",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.grey.shade100,
+                      borderRadius: BorderRadius.circular(10)),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Add the recipe description...',
+                        hintStyle: TextStyle(
+                            color: Colors.grey.shade300, fontSize: 15),
+                        contentPadding: EdgeInsets.only(left: 20, top: 20)),
+                    minLines: 6,
+                    keyboardType: TextInputType.multiline,
+                    maxLines: null,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
               RecipeTextFields(title: "Cooktime", hintText: "1hr, 30mins etc"),
               SizedBox(
                 height: 10,
@@ -85,7 +122,15 @@ class CreateRecipe extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              RecipeTextFields(title: "Origin", hintText: "Location"),
+              RecipeTextFields(
+                title: "Origin",
+                hintText: "Location",
+                icon: Icon(
+                  Icons.location_pin,
+                  size: 20,
+                  color: Colors.grey.shade300,
+                ),
+              ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -108,15 +153,17 @@ class CreateRecipe extends StatelessWidget {
                 child: SizedBox(
                     height: 300,
                     child: IngredientListTile(
-                      ingredients:
-                          List.generate(5, (index) => "Ingredients $index"),
+                      ingredients: List.generate(
+                          5, (index) => "Ingredients ${index + 1}"),
                     )),
               ),
               SizedBox(
                 height: 10,
               ),
               RecipeButtons(name: "Add Ingredients:"),
-              SizedBox(height: 20,)
+              SizedBox(
+                height: 20,
+              ),
             ],
           ),
         ),

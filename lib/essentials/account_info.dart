@@ -34,7 +34,7 @@ class AccountInfo extends StatelessWidget {
                   ),
                   MyComment(),
                   SizedBox(
-                    width: 10,
+                    width: 20,
                   ),
                 ],
               ),

@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 class RecipeTextFields extends StatelessWidget {
   const RecipeTextFields(
-      {super.key, required this.title, required this.hintText});
+      {super.key, required this.title, required this.hintText, this.icon});
   final String title;
   final String hintText;
+  final Icon? icon;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -32,7 +33,8 @@ class RecipeTextFields extends StatelessWidget {
               decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: hintText,
-                  contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                  suffixIcon: icon,
+                  contentPadding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
                   hintStyle:
                       TextStyle(color: Colors.grey.shade300, fontSize: 15)),
             ),
@@ -101,7 +103,8 @@ class RecipeButtons extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Container(
-        decoration: BoxDecoration(color: Color(0xffFFECEC),borderRadius: BorderRadius.circular(20)),
+        decoration: BoxDecoration(
+            color: Color(0xffFFECEC), borderRadius: BorderRadius.circular(20)),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20),
           child: Align(
@@ -110,10 +113,22 @@ class RecipeButtons extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-              Icon(Icons.add,color: Color(0xffFF3438),),
-              SizedBox(width: 20,),
-              Text(name,style: TextStyle(fontWeight: FontWeight.bold,color: Color(0xffFF3438),fontSize: 20),)
-            ],),
+                Icon(
+                  Icons.add,
+                  color: Color(0xffFF3438),
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Text(
+                  name,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xffFF3438),
+                      fontSize: 20),
+                )
+              ],
+            ),
           ),
         ),
       ),

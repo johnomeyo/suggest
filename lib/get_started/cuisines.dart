@@ -28,21 +28,15 @@ class Cuisines extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(bottom: 20, left: 15),
                 child: Text(
-                  "Select your cuisine ",
+                  "Select your cuisine preferences🥘",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 20, left: 15),
-                child: Text(
-                  "preferences🥘",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                ),
-              ),
+             
               Padding(
                 padding: const EdgeInsets.only(left: 15),
                 child: Text(
-                  "Please select your cooking level for \nbetter recommendations or you can skip it.",
+                  "Please select your cooking level for better recommendations or you can skip it.",
                   style: TextStyle(fontSize: 15),
                 ),
               ),
