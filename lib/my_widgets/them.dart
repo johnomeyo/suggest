@@ -10,13 +10,33 @@ class MyComment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: 11,
-      backgroundColor: Colors.black,
+    return GestureDetector(
+      onTap: () {
+        final snackBar = SnackBar(
+          content: const Text(
+              "The comment section will be available soon❤️😊"),
+          action: SnackBarAction(
+            label: 'Okay',
+            onPressed: () {
+              // Some code to undo the change.
+              Navigator.pop(context);
+            },
+          ),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      },
       child: CircleAvatar(
-        backgroundColor: Colors.white,
-        radius: 10,
-        child: Icon(Icons.more_horiz_outlined,color: Colors.black,size: 15,),
+        radius: 11,
+        backgroundColor: Colors.black,
+        child: CircleAvatar(
+          backgroundColor: Colors.white,
+          radius: 10,
+          child: Icon(
+            Icons.more_horiz_outlined,
+            color: Colors.black,
+            size: 15,
+          ),
+        ),
       ),
     );
   }
