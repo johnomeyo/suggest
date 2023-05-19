@@ -34,17 +34,17 @@ class Country extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(bottom: 20, left: 15),
                 child: Text(
-                  "Which country are you",
+                  "Which country are you from🎌",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 20, left: 15),
-                child: Text(
-                  "from? 🎌",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(bottom: 20, left: 15),
+              //   child: Text(
+              //     "from? 🎌",
+              //     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+              //   ),
+              // ),
               Padding(
                 padding: const EdgeInsets.only(left: 15),
                 child: Text(
@@ -55,7 +55,7 @@ class Country extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-      CustomSearchBar(hintText: 'Search for country',),
+      CustomSearchBar(hintText: 'Search for country', onChanged: (value) {  },),
               Padding(
                 padding: const EdgeInsets.all(20),
                 child: Container(

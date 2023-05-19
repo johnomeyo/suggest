@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
+import 'package:suggest/providers.dart';
 
 class MycheckBox extends StatefulWidget {
   const MycheckBox({super.key});
@@ -33,8 +35,6 @@ class Recipes extends StatefulWidget {
   State<Recipes> createState() => _RecipesState();
 }
 
-bool isAdded = false;
-
 class _RecipesState extends State<Recipes> {
   @override
   Widget build(BuildContext context) {
@@ -49,17 +49,17 @@ class _RecipesState extends State<Recipes> {
           fit: BoxFit.cover,
         ),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8, top: 8),
-            child: GestureDetector(
-              onTap: () {
-                 isAdded = true;
-                setState(() {
-                 
-                  if (isAdded == true) {
+      child: Consumer<AddBookmarkProvider>(
+        builder: (context, addBookmark, child) => Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 8, top: 8),
+              child: GestureDetector(
+                onTap: () {
+                  addBookmark.changeAdd();
+
+                  if (addBookmark.add) {
                     Fluttertoast.showToast(
                       msg: "Added to Bookmarks",
                       toastLength: Toast.LENGTH_SHORT,
@@ -69,55 +69,56 @@ class _RecipesState extends State<Recipes> {
                       fontSize: 16.0,
                       gravity: ToastGravity.TOP_LEFT,
                     );
-                  } else {
-                    Fluttertoast.showToast(
-                      msg: "Already Added to Bookmark",
-                      toastLength: Toast.LENGTH_SHORT,
-                      timeInSecForIosWeb: 1,
-                      backgroundColor: Color(0xffFF3438),
-                      textColor: Colors.white,
-                      fontSize: 16.0,
-                      gravity: ToastGravity.TOP_LEFT,
-                    );
                   }
-                  //print(isAdded);
-                });
+                else {
+                    Fluttertoast.showToast(
+                  msg: "Already added to bookmarks",
+                  toastLength: Toast.LENGTH_SHORT,
+                  timeInSecForIosWeb: 1,
+                  backgroundColor: Color(0xffFF3438),
+                  textColor: Colors.white,
+                  fontSize: 16.0,
+                  gravity: ToastGravity.TOP_LEFT,
+                );
+                  }
               },
-              child: Align(
-                alignment: Alignment.topRight,
-                child: CircleAvatar(
-                  radius: 15,
-                  backgroundColor: Color(0xFFFF3438),
-                  child: Icon(isAdded ? Icons.check : Icons.bookmark_outline),
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: CircleAvatar(
+                    radius: 15,
+                    backgroundColor: Color(0xFFFF3438),
+                    child: Icon(
+                        addBookmark.add ? Icons.check : Icons.bookmark_outline),
+                  ),
                 ),
               ),
             ),
-          ),
-          Spacer(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Text(
-              "Original italian\nPizza recipe for...",
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+            Spacer(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Text(
+                "Original italian\nPizza recipe for...",
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                CircleAvatar(
-                  radius: 15,
-                  backgroundColor: Color(0xFFFF3438),
-                  child: Image.asset("lib/assets/elon.png"),
-                ),
-                Text("Elon Musk",
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w200))
-              ],
-            ),
-          )
-        ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 15,
+                    backgroundColor: Color(0xFFFF3438),
+                    child: Image.asset("lib/assets/elon.png"),
+                  ),
+                  Text("Elon Musk",
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.w200))
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -159,7 +160,10 @@ class MoreIcon extends StatelessWidget {
 
 class CustomSearchBar extends StatelessWidget {
   final String hintText;
-  const CustomSearchBar({super.key, required this.hintText});
+  const CustomSearchBar(
+      {super.key,
+      required this.hintText,
+      required Null Function(dynamic value) onChanged});
 
   @override
   Widget build(BuildContext context) {

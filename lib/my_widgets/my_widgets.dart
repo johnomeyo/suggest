@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:suggest/data/chef.dart';
 import 'package:suggest/essentials/account_info.dart';
+import 'package:suggest/providers.dart';
 
 class Chefs extends StatelessWidget {
   final String chefName;
@@ -202,17 +204,37 @@ class MySwitch extends StatefulWidget {
 }
 
 class _MySwitchState extends State<MySwitch> {
-  bool light = false;
+  //bool light = false;
   @override
   Widget build(BuildContext context) {
-    return Switch(
-      activeColor: Color(0xffFF3438),
-      onChanged: (bool value) {
-        setState(() {
-          light = value;
-        });
+    // return Consumer<Switcher>(
+    //   builder: (BuildContext context, Switcher switcher, Widget? child) {
+    //     return Switch(
+    //       activeColor: Color(0xffFF3438),
+    //       onChanged: (bool value) {
+    //          Provider.of<Switcher>(context,listen: false).changeLight(value);
+    //        //value= Switcher.changeLight(value);
+    //       },
+    //       value: switcher.light,
+    //     );
+    //   },
+    //   // child: Switch(
+    //   //   activeColor: Color(0xffFF3438),
+    //   //   onChanged: (bool value) {},
+    //   //   value: light,
+    //   // ),
+    // );
+    return Consumer<Switcher>(
+      builder: (context, switcher, child) {
+        return Switch(
+          activeColor: Color(0xffFF3438),
+          onChanged: (bool value) {
+            // Provider.of<Switcher>(context, listen: false).changeLight(value);
+            switcher.changeLight(value);
+          },
+          value: switcher.light,
+        );
       },
-      value: light,
     );
   }
 }
@@ -222,18 +244,23 @@ class MyCustomWidget extends StatelessWidget {
   final String text;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-          child: Text(
-            text,
-            style: TextStyle(fontWeight: FontWeight.w300, fontSize: 20),
+    return Wrap(children: [
+      Row(
+        children: [
+          Flexible(
+            flex: 2,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              child: Text(
+                text,
+                style: TextStyle(fontWeight: FontWeight.w300, fontSize: 20),
+              ),
+            ),
           ),
-        ),
-        Spacer(),
-        MySwitch()
-      ],
-    );
+          Spacer(),
+          MySwitch()
+        ],
+      ),
+    ]);
   }
 }

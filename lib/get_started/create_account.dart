@@ -78,7 +78,7 @@ class CreateAccount extends StatelessWidget {
               ),
               MyTextField(
                 hintPhrase: 'Confirm Password',
-                icon: Icon(Icons.remove_red_eye),
+                icon: Icon(Icons.visibility_off_outlined),
                 obsecureText: true,
               ),
               GestureDetector(

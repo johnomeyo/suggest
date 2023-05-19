@@ -2,14 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:suggest/main.dart';
 
 class Splash extends StatelessWidget {
-  const Splash({super.key});
+  const Splash({Key? key});
 
   @override
-  Widget build(BuildContext context) {
-    Future.delayed(Duration(seconds: 1), () {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => Home()));
-    });
+  Widget build(BuildContext context){
+    // Future. delayed(Duration(seconds: 3), () {
+    //   Navigator.pushReplacement(
+    //       context, MaterialPageRoute(builder: (context) => Home())); 
+    // });
+Future.delayed(Duration(seconds: 3), () {
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(builder: (context) => Home()),
+  );
+});
 
     return Scaffold(
       backgroundColor: Colors.black,

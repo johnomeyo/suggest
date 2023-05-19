@@ -42,7 +42,7 @@ class Discover extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20),
                   child: CustomSearchBar(
-                    hintText: 'Search for recipes or a chef',
+                    hintText: 'Search for recipes or a chef', onChanged: (value) {  },
                   ),
                 ),
                 Headings(heading: "Most Popular"),

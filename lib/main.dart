@@ -1,20 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:suggest/get_started/country.dart';
-
+import 'package:device_preview/device_preview.dart';
+import 'package:suggest/providers.dart';
 import 'package:suggest/screens/home_screen.dart';
 import 'package:suggest/screens/idle.dart';
 import 'package:suggest/splash.dart';
 
-void main() => runApp(const MyApp());
+void main(){ 
+  //Provider.debugCheckInvalidValueType = null;
+  runApp(
+    DevicePreview(
+      
+      enabled: true,
+      builder: (context) => const MyApp(),
+    ),
+  );}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData.light(),
-      home: Splash(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context)=>Switcher()),
+         ChangeNotifierProvider(create: (context)=>AddBookmarkProvider()),
+      ],
+      child: MaterialApp(
+        useInheritedMediaQuery: true,
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
+        theme: ThemeData.light(),
+        home: Splash(),
+      ),
     );
   }
 }

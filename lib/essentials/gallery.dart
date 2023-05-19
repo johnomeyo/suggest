@@ -1,7 +1,7 @@
-import 'dart:io';
+//import 'dart:io';
 import 'package:flutter/material.dart';
 
-import "package:images_picker/images_picker.dart";
+//import "package:images_picker/images_picker.dart";
 
 class Gallery extends StatelessWidget {
   const Gallery({super.key});
@@ -14,6 +14,7 @@ class Gallery extends StatelessWidget {
           TextButton(
               onPressed: () {
                 //openGallery();
+                debugPrint("hey");
               },
               child: Text("Access Gallery"))
         ],

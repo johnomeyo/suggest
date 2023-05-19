@@ -7,44 +7,6 @@ import 'package:percent_indicator/percent_indicator.dart';
 ///import 'package:flutter/src/widgets/framework.dart';
 //import 'package:flutter/src/widgets/placeholder.dart';
 
-class MySlider extends StatefulWidget {
-  const MySlider({super.key});
-
-  @override
-  State<MySlider> createState() => _MySliderState();
-}
-
-class _MySliderState extends State<MySlider> {
-  @override
-  Widget build(BuildContext context) {
-    double currentValue = 4;
-    return SizedBox(
-      width: 200,
-      child: SliderTheme(
-        data: SliderThemeData(
-          activeTickMarkColor: Colors.black45,
-          inactiveTickMarkColor: Colors.amber,
-          trackHeight: 5,
-          thumbShape: SliderComponentShape.noThumb,
-        ),
-        child: Slider(
-          value: currentValue,
-          min: 0,
-          max: 10,
-          divisions: 6,
-          activeColor: Color(0xFFED3034),
-          inactiveColor: Color(0xFFEFEEEE),
-          onChanged: (value) {
-            setState(() {
-              currentValue = value;
-            });
-          },
-        ),
-      ),
-    );
-  }
-}
-
 class MyButtons extends StatelessWidget {
   final String name;
   const MyButtons({super.key, required this.name});
@@ -82,53 +44,51 @@ class _DropDownsState extends State<DropDowns> {
   String? value;
   @override
   Widget build(BuildContext context) {
-    return DropdownButton(
-        value: value,
-        isExpanded: true,
-        elevation: 0,
-        hint: Text("Gender"),
-        icon: Icon(Icons.arrow_drop_down_outlined),
-        iconEnabledColor: Color(0xFFFF3438),
-        items: [
-          DropdownMenuItem(
-            value: 'Male',
-            child: Text("male"),
-          ),
-          DropdownMenuItem(value: 'female', child: Text("Female")),
-          DropdownMenuItem(value: 'trans', child: Text("Trans")),
-        ],
-        onChanged: (value) {
-          setState(() {
-            this.value = value;
-          });
-        });
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      width: double.infinity,
+      decoration: BoxDecoration(color: Colors.white),
+      child: DropdownButton(
+          value: value,
+          isExpanded: true,
+          elevation: 0,
+          underline: Container(height: 1,color: Colors.transparent,),
+          hint: Text("Gender"),
+          icon: Icon(Icons.arrow_drop_down_outlined),
+          iconEnabledColor: Color(0xFFFF3438),
+          items: [
+            DropdownMenuItem(value: 'Male', child: Text("Male")),
+            DropdownMenuItem(value: 'female', child: Text("Female")),
+            DropdownMenuItem(value: 'trans', child: Text("Trans")),
+          ],
+          onChanged: (value) {
+            setState(() {
+              this.value = value;
+            });
+          }),
+    );
   }
 }
 
-class Top extends StatefulWidget {
-  const Top({super.key});
-
-  @override
-  State<Top> createState() => _TopState();
-}
-
-class _TopState extends State<Top> {
+class Top extends StatelessWidget {
+  const Top({super.key,});
+  // final Widget other;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         GestureDetector(child: Icon(Icons.arrow_back)),
-        ProgressIndicator(),
+        ProgressIndicator(percentage: 0.5,),
       ],
     );
   }
 }
 
 class ProgressIndicator extends StatefulWidget {
-  // final double percentage;
+  final double percentage;
   const ProgressIndicator({
     super.key,
-    //required this.percentage,
+    required this.percentage,
   });
 
   @override
@@ -141,7 +101,7 @@ class _ProgressIndicatorState extends State<ProgressIndicator> {
   @override
   Widget build(BuildContext context) {
     return LinearPercentIndicator(
-      percent: 0.5, //pecentage ,
+      percent: widget.percentage,
       width: 200,
       lineHeight: 10.0,
       animation: true,
@@ -211,7 +171,7 @@ class FoodTile extends StatelessWidget {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 30,
+                    height: 10,
                   ),
                   Image.asset(
                     imageItems[index],
@@ -278,7 +238,7 @@ class MyTextField extends StatelessWidget {
         obscureText: obsecureText,
         decoration: InputDecoration(
             suffixIcon: icon,
-            suffixIconColor: Color(0xFFFF3438),
+            suffixIconColor: Colors.grey.shade600,
             //labelStyle: TextStyle(color: const Color(0xFFFF3438)),
             hintText: hintPhrase,
             border: UnderlineInputBorder()),

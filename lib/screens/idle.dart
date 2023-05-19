@@ -2,11 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:suggest/essentials/create_recipe.dart';
+//import 'package:suggest/essentials/practise.dart';
 import 'package:suggest/essentials/settings.dart';
 import 'package:suggest/meals/lunch/follow.dart';
+import 'package:suggest/meals/lunch/product_display.dart';
 import 'package:suggest/screens/discover.dart';
-import 'package:suggest/settings/about.dart';
 import 'package:suggest/sign_in/sign_in.dart';
+//import 'package:suggest/settings/about.dart';
+//import 'package:suggest/sign_in/sign_in.dart';
 import '../my_widgets/them_widgets.dart';
 // import 'dart:async';
 // ignore: depend_on_referenced_packages
@@ -37,9 +40,19 @@ class IdleScreen extends StatelessWidget {
             child: Column(
               children: [
                 // Text("data"),
+
                 SizedBox(
-                  height: 200,
+                  height: 100,
                 ),
+                TextButton(
+                    onPressed: () {
+                      Navigator.push((context),
+                          MaterialPageRoute(builder: (context) => ToDo()));
+                    },
+                    child: Text(
+                      "ToDo",
+                      style: TextStyle(fontFamily: "Poppins"),
+                    )),
                 MyFavoriteIcon(),
                 SizedBox(
                   height: 20,
@@ -102,7 +115,9 @@ class IdleScreen extends StatelessWidget {
                           MaterialPageRoute(
                               builder: (context) => FollowAndFollowing()));
                     },
-                    child: Text("Help Center"))
+                    child: Text("Help Center")),
+                H(),
+                //Text(emailController.toString())
               ],
             ),
           ),
@@ -133,5 +148,51 @@ class WhatsAppScreen extends StatelessWidget {
     } else {
       throw 'Could not launch $whatsappUrl';
     }
+  }
+}
+
+class H extends StatefulWidget {
+  const H({super.key});
+
+  @override
+  State<H> createState() => _HState();
+}
+
+class _HState extends State<H> {
+  final emailController = TextEditingController();
+  @override
+  void dispose() {
+    emailController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        TextField(
+          controller: emailController,
+          decoration: InputDecoration(hintText: "email"),
+        ),
+          FloatingActionButton(
+        // When the user presses the button, show an alert dialog containing
+        // the text that the user has entered into the text field.
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                // Retrieve the text the that user has entered by using the
+                // TextEditingController.
+                content: Text(emailController.text),
+              );
+            },
+          );
+        },
+        tooltip: 'Show me the value!',
+        child: const Icon(Icons.text_fields),
+      ),
+      ],
+    );
   }
 }
