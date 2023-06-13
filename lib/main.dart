@@ -1,14 +1,18 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:suggest/get_started/country.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:suggest/providers.dart';
+import 'package:suggest/screens/auth_page.dart';
 import 'package:suggest/screens/home_screen.dart';
 import 'package:suggest/screens/idle.dart';
-import 'package:suggest/splash.dart';
 
-void main(){ 
-  //Provider.debugCheckInvalidValueType = null;
+Future <void> main() async{ 
+  WidgetsFlutterBinding.ensureInitialized();
+ await Firebase.initializeApp(
+   options: FirebaseOptions(apiKey: "AIzaSyAid9y0KOikx9I8Z3Sj5OIYbA8cmt257hE", appId: "com.example.suggest", messagingSenderId: "330884313798-3t55831jf726f9lcu73lf18lff2003ho.apps.googleusercontent.com", projectId: "suggest-bb097")
+  );
   runApp(
     DevicePreview(
       
@@ -28,11 +32,8 @@ class MyApp extends StatelessWidget {
          ChangeNotifierProvider(create: (context)=>AddBookmarkProvider()),
       ],
       child: MaterialApp(
-        useInheritedMediaQuery: true,
-        locale: DevicePreview.locale(context),
-        builder: DevicePreview.appBuilder,
-        theme: ThemeData.light(),
-        home: Splash(),
+
+        home: AuthPage(),
       ),
     );
   }

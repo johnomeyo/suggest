@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:suggest/meals/flex_widgets.dart';
 import 'package:suggest/my_widgets/my_widgets.dart';
@@ -11,9 +12,22 @@ void main() {
   runApp(const SignIn());
 }
 
-class SignIn extends StatelessWidget {
+class SignIn extends StatefulWidget {
   const SignIn({super.key});
 
+  @override
+  State<SignIn> createState() => _SignInState();
+}
+final passwordController = TextEditingController();
+final emailController = TextEditingController();
+bool isObsolete = true;
+Future signIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim());
+  }
+
+class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -59,9 +73,11 @@ class SignIn extends StatelessWidget {
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: SignInput(),
-              ),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: TextField(
+                    controller: emailController,
+                    decoration: InputDecoration(border: UnderlineInputBorder()),
+                  )),
               SizedBox(
                 height: 5,
               ),
@@ -75,7 +91,20 @@ class SignIn extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: MyWidget(),
+                child: TextField(
+      controller: passwordController,
+      decoration: InputDecoration(
+        suffixIcon: GestureDetector(
+          onTap: () {
+            setState(() {
+              isObsolete = !isObsolete;
+            });
+          },
+          child: Icon(isObsolete ? Icons.remove_red_eye : Icons.visibility_off),
+        ),
+      ),
+      obscureText: isObsolete,
+    )
               ),
               SizedBox(
                 height: 5,
@@ -191,10 +220,7 @@ class SignIn extends StatelessWidget {
           ),
         ),
         bottomNavigationBar: GestureDetector(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()));
-            },
+            onTap: signIn,
             child: MyButtons(name: "Sign In")),
       ),
     );

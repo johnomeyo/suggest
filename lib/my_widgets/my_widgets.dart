@@ -42,12 +42,14 @@ class MyWidget extends StatefulWidget {
   State<MyWidget> createState() => _MyWidgetState();
 }
 
+final passwordController = TextEditingController();
 bool isObsolete = true;
 
 class _MyWidgetState extends State<MyWidget> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: passwordController,
       decoration: InputDecoration(
         suffixIcon: GestureDetector(
           onTap: () {
