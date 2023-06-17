@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:suggest/main.dart';
 
 class Splash extends StatelessWidget {
-  const Splash({Key? key});
+  const Splash({super.key, });
 
   @override
   Widget build(BuildContext context){

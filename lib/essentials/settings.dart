@@ -1,5 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:suggest/main.dart';
 import 'package:suggest/my_widgets/my_widgets.dart';
 import 'package:suggest/settings/about.dart';
 import 'package:suggest/settings/help_center.dart';
@@ -66,7 +66,8 @@ class Settings extends StatelessWidget {
                 iconColor: Color(0xff00DDAB),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: Divider(
                   color: Colors.grey[300],
                 ),
@@ -97,8 +98,8 @@ class Settings extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => About()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => About()));
                 },
                 child: SettingItems(
                   title: "About Mooncake",
@@ -107,106 +108,114 @@ class Settings extends StatelessWidget {
                   iconColor: Color(0xff4E91FD),
                 ),
               ),
-              GestureDetector(
-                  onTap: () {
-                    showModalBottomSheet(
-                        context: context,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                        builder: ((context) {
-                          return SizedBox(
-                            height: 250,
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 20),
-                                  child: Text(
-                                    "Log Out",
+              //Spacer(),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: GestureDetector(
+                    onTap: () {
+                      showModalBottomSheet(
+                          context: context,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                          builder: ((context) {
+                            return SizedBox(
+                              height: 250,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 20),
+                                    child: Text(
+                                      "Log Out",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
+                                    child: Divider(
+                                      color: Colors.grey[300],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(
+                                    "Are you sure you want to log out?",
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20),
                                   ),
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 20),
-                                  child: Divider(
-                                    color: Colors.grey[300],
+                                  SizedBox(
+                                    height: 10,
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Text(
-                                  "Are you sure you want to log out?",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 20),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 10),
-                                  child: Row(
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () => Navigator.pop(context),
-                                        child: Container(
-                                            decoration: BoxDecoration(
-                                                color: Color(0xffFFECEC),
-                                                borderRadius:
-                                                    BorderRadius.circular(30)),
-                                            child: Padding(
-                                              padding: const EdgeInsets.symmetric(
-                                                  horizontal: 30, vertical: 20),
-                                              child: Text(
-                                                "Cancel",
-                                                style: TextStyle(
-                                                    color: Color(0xffFF3438),
-                                                    fontSize: 20),
-                                              ),
-                                            )),
-                                      ),
-                                      Spacer(),
-                                      GestureDetector(
-                                        onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) => MyApp()));
-                                        },
-                                        child: Container(
-                                            decoration: BoxDecoration(
-                                                color: Color(0xffFF3438),
-                                                borderRadius:
-                                                    BorderRadius.circular(30)),
-                                            child: Padding(
-                                              padding: const EdgeInsets.symmetric(
-                                                  horizontal: 30, vertical: 20),
-                                              child: Text(
-                                                "Yes, Log Out",
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    color: Colors.white),
-                                              ),
-                                            )),
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          );
-                        }));
-                  },
-                  child: SettingItems(
-                    title: "Log Out",
-                    color: Color(0xffFFF2F2),
-                    icon: Icons.logout_rounded,
-                    iconColor: Color(0xffFF4C4F),
-                  ))
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 10),
+                                    child: Row(
+                                      children: [
+                                        GestureDetector(
+                                          onTap: () => Navigator.pop(context),
+                                          child: Container(
+                                              decoration: BoxDecoration(
+                                                  color: Color(0xffFFECEC),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          30)),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 30,
+                                                        vertical: 20),
+                                                child: Text(
+                                                  "Cancel",
+                                                  style: TextStyle(
+                                                      color: Color(0xffFF3438),
+                                                      fontSize: 20),
+                                                ),
+                                              )),
+                                        ),
+                                        Spacer(),
+                                        GestureDetector(
+                                          onTap: () {
+                                            FirebaseAuth.instance.signOut();
+                                          },
+                                          child: Container(
+                                              decoration: BoxDecoration(
+                                                  color: Color(0xffFF3438),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          30)),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 30,
+                                                        vertical: 20),
+                                                child: Text(
+                                                  "Yes, Log Out",
+                                                  style: TextStyle(
+                                                      fontSize: 20,
+                                                      color: Colors.white),
+                                                ),
+                                              )),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            );
+                          }));
+                    },
+                    child: SettingItems(
+                      title: "Log Out",
+                      color: Color(0xffFFF2F2),
+                      icon: Icons.logout_rounded,
+                      iconColor: Color(0xffFF4C4F),
+                    )),
+              )
             ],
           ),
         ),

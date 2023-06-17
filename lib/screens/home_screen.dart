@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:suggest/essentials/create_recipe.dart';
-import 'package:suggest/essentials/settings.dart';
 import 'package:suggest/my_widgets/alpha_widgets.dart';
 import 'package:suggest/screens/discover.dart';
+import 'package:suggest/screens/profile_display.dart';
 
 void main() => runApp(const HomeScreen());
 
@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeTab(),
     Discover(),
     CreateRecipe(),
-    Settings(),
+    ProfileDisplayPage(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,9 @@ class _HomeScreenState extends State<HomeScreen> {
       home: Scaffold(
         body: pages[selectedIndex],
         bottomNavigationBar: GNav(
-          gap: 10,
+          gap: 5,
+          haptic: true,
+          curve: Curves.easeOutExpo,
           activeColor: Colors.red,
           color: Colors.grey.shade800,
           tabBackgroundColor: Colors.transparent,
@@ -49,11 +51,11 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             GButton(
               icon: Icons.add,
-              text: "Post",
+              text: " ",
             ),
             GButton(
-              icon: Icons.file_copy,
-              text: "Recipes",
+              icon: Icons.favorite,
+              text: "Profile",
             ),
             // GButton(
             //   icon: Icons.person_outline,
