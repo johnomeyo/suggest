@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:suggest/main.dart';
 import 'package:suggest/my_widgets/my_widgets.dart';
 import 'package:suggest/settings/about.dart';
 import 'package:suggest/settings/help_center.dart';

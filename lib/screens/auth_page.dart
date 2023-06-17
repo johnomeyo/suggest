@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:suggest/my_widgets/alpha_widgets.dart';
 import 'package:suggest/screens/home_screen.dart';
 
 import '../sign_in/sign_in.dart';

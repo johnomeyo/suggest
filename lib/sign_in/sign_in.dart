@@ -1,8 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:suggest/meals/flex_widgets.dart';
-import 'package:suggest/my_widgets/my_widgets.dart';
-import 'package:suggest/screens/home_screen.dart';
 import 'package:suggest/sign_in/forgot_password.dart';
 
 import '../my_widgets/the_widgets.dart';
